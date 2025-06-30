@@ -8,7 +8,7 @@ import SpaceBackground from "./SpaceCompoent";
 export default function Hero({ fadeOut }) {
   return (
     <motion.div
-      className="h-screen w-screen text-white flex items-center justify-around relative"
+      className="w-screen text-white flex items-center justify-around relative"
       initial={{ opacity: 1 }}
       animate={{ opacity: fadeOut ? 0 : 1 }}
       transition={{ duration: 0.7 }}
@@ -42,7 +42,7 @@ export default function Hero({ fadeOut }) {
           },
           opacity: { duration: 1.2 },
         }}
-        className="w-[370px] h-[580px] flex items-center justify-center overflow-hidden mt-16 z-40 rounded-b-[150px]"
+        className="w-[370px] h-[580px] flex items-center justify-center overflow-hidden z-40 rounded-b-[150px]"
       >
         <img
           src={hero}
