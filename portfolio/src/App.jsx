@@ -1,21 +1,22 @@
-import Header from './components/Header'
-import Hero from './components/Hero'
-import SpaceBackground from './components/SpaceCompoent'
-import './App.css'
-
-function App() {
-
+import './App.css'; 
+import Portfolio from './components/Portfolio';
+import SpaceBackground from './components/SpaceCompoent';
+import Header from './components/Header';
+import RocketAnimation from './components/RocketAnimation';
+import Skills from './components/Skills';
+import Hero from './components/Hero';
+export default function App() {
 
   return (
     <>
-    <div className='hero-container'>
-      <SpaceBackground/>
+    <div className='overflow-hidden'>
       <Header/>
-      <Hero/>
+    <SpaceBackground/>
+    <Hero/>
+    <Skills/>
     </div>
-      
+    
     </>
-  )
-}
 
-export default App
+  );
+}

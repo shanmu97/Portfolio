@@ -1,18 +1,25 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
-import resume from '../Assets/ShanmukhaReddy_SoftwareDeveloper.pdf'
+import resume from '../Assets/ShanmukhaReddy_SoftwareDeveloper.pdf';
 import hero from "../Assets/Hero_Photo.png";
 import SpaceBackground from "./SpaceCompoent";
 
-export default function Hero() {
+export default function Hero({ fadeOut }) {
   return (
-    <div className="w-screen h-screen bg-black text-white flex items-center justify-around overflow-hidden hero-container">
-      {/* Left Image */}
+    <motion.div
+      className="h-screen w-screen text-white flex items-center justify-around relative"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: fadeOut ? 0 : 1 }}
+      transition={{ duration: 0.7 }}
+      exit={{ opacity: 0 }}
+    >
+      {/* Space Background */}
       <div className="absolute inset-0 -z-10">
         <SpaceBackground />
       </div>
+
+      {/* Left Image */}
       <motion.div
         initial={{ opacity: 0, y: 300, rotate: 0 }}
         animate={{
@@ -35,12 +42,12 @@ export default function Hero() {
           },
           opacity: { duration: 1.2 },
         }}
-        className="w-[350px] h-[550px] overflow-hidden"
+        className="w-[370px] h-[580px] flex items-center justify-center overflow-hidden mt-16 z-40 rounded-b-[150px]"
       >
         <img
           src={hero}
-          alt="Hero"
-          className="w-full h-full object-cover rounded-lg shadow-md"
+          alt="Shanmukha Reddy Vasa"
+          className="w-[370px] h-[580px] flex items-center justify-center mt-16 z-40"
         />
       </motion.div>
 
@@ -58,7 +65,7 @@ export default function Hero() {
           <h1 className="text-6xl font-bold mb-1 cookie-regular">
             Shanmukha Reddy Vasa
           </h1>
-          <h3 className="text-xl font-medium">Web Developer</h3>
+          <h3 className="text-xl font-medium">Full Stack Web Developer</h3>
         </motion.div>
 
         {/* Middle Section with Red Line aligned left */}
@@ -77,10 +84,10 @@ export default function Hero() {
 
             {/* Flowing text from red line */}
             <p className="text-sm font-light leading-relaxed text-justify w-xs">
-            Pursuing final-year B.Tech degree with a passion for technology.
-            Develop web applications and can integrate AI features into websites.
-            Create innovative and practical projects to solve real problems.<br/>
-            Always Learning, Always Improving.
+              Pursuing final-year B.Tech degree with a passion for technology.
+              Develop web applications and can integrate AI features into websites.
+              Create innovative and practical projects to solve real problems.<br/>
+              Always Learning, Always Improving.
             </p>
           </motion.div>
 
@@ -127,6 +134,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
