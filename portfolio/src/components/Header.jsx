@@ -28,24 +28,29 @@ function UFOModel() {
 const DraggableMenu = () => {
   const [open, setOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const constraintsRef = useRef(null);
   const radius = 100;
   const angleStep = (2 * Math.PI) / icons.length;
 
-  // Random position update every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      const x = Math.random() * (window.innerWidth - 200);
-      const y = Math.random() * (window.innerHeight - 200);
-      setPosition({ x, y });
+      if (!isHovered) {
+        const x = Math.random() * (window.innerWidth - 200);
+        const y = Math.random() * (window.innerHeight - 200);
+        setPosition({ x, y });
+      }
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isHovered]);
 
   return (
     <div ref={constraintsRef} className="fixed inset-0 overflow-hidden z-40">
       <motion.div
+        drag
+        dragConstraints={constraintsRef}
+        dragElastic={0.3}
         animate={{ x: position.x, y: position.y }}
         transition={{ duration: 2, ease: 'easeInOut' }}
         className="absolute"
@@ -57,8 +62,13 @@ const DraggableMenu = () => {
           <Canvas className="absolute top-0 left-0 w-full h-full" camera={{ position: [0, 0, 3] }}>
             <ambientLight intensity={2} />
             <Suspense fallback={null}>
-              <UFOModel />
-              <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.2} />
+              <group
+                onPointerOver={() => setIsHovered(true)}
+                onPointerOut={() => setIsHovered(false)}
+              >
+                <UFOModel />
+              </group>
+              <OrbitControls enableZoom={false} autoRotate={!isHovered} autoRotateSpeed={0.2} />
             </Suspense>
           </Canvas>
 

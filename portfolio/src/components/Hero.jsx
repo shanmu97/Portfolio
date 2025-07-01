@@ -8,7 +8,7 @@ import SpaceBackground from "./SpaceCompoent";
 export default function Hero({ fadeOut }) {
   return (
     <motion.div
-      className="w-screen text-white flex items-center justify-around relative"
+      className="w-screen h-screen text-white flex items-center justify-around relative orbitron-500"
       initial={{ opacity: 1 }}
       animate={{ opacity: fadeOut ? 0 : 1 }}
       transition={{ duration: 0.7 }}
@@ -47,7 +47,7 @@ export default function Hero({ fadeOut }) {
         <img
           src={hero}
           alt="Shanmukha Reddy Vasa"
-          className="w-[370px] h-[580px] flex items-center justify-center mt-16 z-40"
+          className="w-[370px] h-[580px] flex items-center justify-center mt-16 z-50 "
         />
       </motion.div>
 
@@ -62,14 +62,14 @@ export default function Hero({ fadeOut }) {
           <h3 className="text-2xl font-light mb-1">
             <span className="text-3xl font-bold">Hello Folks!</span> I am
           </h3>
-          <h1 className="text-6xl font-bold mb-1 cookie-regular">
+          <h1 className="text-6xl font-bold mb-1 bungee-spice-regular">
             Shanmukha Reddy Vasa
           </h1>
-          <h3 className="text-xl font-medium">Full Stack Web Developer</h3>
+          <h3 className="text-xl font-medium orbitron-500">Full Stack Web Developer | Data Engineer</h3>
         </motion.div>
 
         {/* Middle Section with Red Line aligned left */}
-        <div className="flex flex-col items-start space-y-6 mt-6">
+        <div className="flex flex-col items-start space-y-6 mt-6 pixelify-sans-500">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -77,18 +77,19 @@ export default function Hero({ fadeOut }) {
             className="flex items-start space-x-4 max-w-lg"
           >
             {/* Red vertical line */}
-            <div
-              className="w-1 bg-red-500 rounded-sm"
-              style={{ height: "100%" }}
-            ></div>
+            <div className="relative pl-4">
+              <div className="absolute left-0 top-0 h-full w-1 bg-red-500"></div>
+              <p className="text-[14px] font-light leading-relaxed text-justify comic-relief-regular">
+                Software Developer Intern at Lumiq.ai with hands-on experience in Full Stack Development and Data Engineering.
+                Skilled in building dynamic web applications, designing scalable data pipelines, and integrating AI capabilities into modern websites.
+                Driven by innovation and committed to continuous learning.<br />
+                Always Learning, Always Improving.
 
-            {/* Flowing text from red line */}
-            <p className="text-sm font-light leading-relaxed text-justify w-xs">
-              Pursuing final-year B.Tech degree with a passion for technology.
-              Develop web applications and can integrate AI features into websites.
-              Create innovative and practical projects to solve real problems.<br/>
-              Always Learning, Always Improving.
-            </p>
+              </p>
+            </div>
+
+
+
           </motion.div>
 
           <motion.div
